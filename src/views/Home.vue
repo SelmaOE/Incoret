@@ -156,9 +156,6 @@
     }
   }
   @media only screen and (max-width: 432px){
-    .right_squares{
-      visibility: hidden;
-    }
     .section-format{
       min-height: 85%;
     }
