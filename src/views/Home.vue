@@ -5,13 +5,13 @@
         <v-layout row align-center>
           <div class="my-flex">
             <v-flex offset-xs2>
-              <hr>
+              <hr class="hr-left">
             </v-flex>
             <v-flex offset-xs2>
-              <h1 id="title">INCORET</h1>
+              <h1 id="title" class="fade-anim">INCORET</h1>
             </v-flex>
             <v-flex xs5>
-              <hr>
+              <hr class="hr-right">
             </v-flex>
             <v-flex offset-xs2>
               <h2 class="sub-title">INSTALACIÓN CORPORATIVA
@@ -28,8 +28,10 @@
       <v-container fluid fill-height class="contain">
         <v-layout row>
           <v-flex offset-(xs1|sm3 mt-4 mr-5)>
-            <h2 id="title" class="text-xs-center py-3">NOSOTROS</h2>
-            <hr>
+            <h2 id="title" class="text-xs-center py-3"
+            :class="{'title-anim': animation}">NOSOTROS</h2>
+            <hr v-observe-visibility="visibilityChanged"
+                    :class="{'hr-right': animation}">
             <v-flex class="body text-xs-left text-sm-right text-md-right mt-3 pt-3 pl-5">
               <p>
                 Contamos con 11 años de experiencia en el negocio de las telecomunicaciones, ofreciendo  dentro de un
@@ -50,11 +52,21 @@
 </template>
 
 <script>
-
-  export default {
-    components: {
+export default {
+    data(){
+        return {
+            animation:false
+        }
+    },
+    methods:{
+        visibilityChanged(isVisible){
+            console.log(isVisible)
+            if(isVisible)
+                this.animation = true;
+        }
     }
-  }
+
+}
 </script>
 
 <style>
@@ -79,6 +91,32 @@
     height: 200px;
     font-weight: 100;
   }
+
+  .hr-left{
+    animation: floatLeft 1s 1;
+  }
+  @keyframes floatLeft{
+    0%{transform:translateX(1200px);}
+    to{transform:translateX(0);}
+  }
+
+  .hr-right{
+    animation: floatRight 1s 1;
+  }
+  @keyframes floatRight{
+    0%{transform:translateX(-1200px);}
+    to{transform:translateX(0);}
+  }
+
+  .fade-anim{
+    animation: fade-title 3s 1;
+
+  }
+  @keyframes fade-title{
+    0%{opacity:0}
+    to{opacity:1}
+  }
+
   .squares-anim{
     position: absolute;
     height: 30%;
@@ -90,7 +128,6 @@
     0% { transform: translateY(10px); }
     100% { transform: translateY(-10px); }
   }
-
 
   #aboutUs{
     background-image: url(../assets/nosotros.png);
