@@ -27,7 +27,7 @@
     <div id="aboutUs" class="section-format">
       <v-container fluid fill-height class="contain">
         <v-layout row>
-          <v-flex offset-(xs1|sm3 mt-4 mr-5()>
+          <v-flex offset-(xs1|sm3 mt-4 mr-5)>
             <h2 id="title" class="text-xs-center py-3">NOSOTROS</h2>
             <hr>
             <v-flex class="body text-xs-left text-sm-right text-md-right mt-3 pt-3 pl-5">
@@ -100,10 +100,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
-    width: 100%;
-    min-height: 100%;
-    display:flex;
-    flex: 1 1 100%;
+    min-height: 130%;
   }
   #aboutUs .contain{
     padding: 10% 10% 0px;
@@ -127,7 +124,7 @@
     animation: mover 2s infinite  alternate;
 
   }
-  @media only screen and (max-width: 1696px){
+  @media only screen and (max-width: 1400px){
     .section-format{
       min-height:85%;
     }
@@ -148,23 +145,25 @@
     #aboutUs .contain{
       padding: 0px;
     }
-    .squares-anim{
-      height:150px;
+  }
+  @media only screen and (max-width: 600px){
+    #firstSection{
+      background-size:cover;
     }
-    #aboutUs .squares-anim{
-      height:180px;
+    .section-format{
+      background-size: auto;
+      min-height: 60%;
     }
   }
-  @media only screen and (max-width: 900px){
-    .section-format{
-      max-height:700px;
-      min-height:5%;
+  @media only screen and (max-width: 432px){
+    .right_squares{
+      visibility: hidden;
     }
-  }
-  @media only screen and (max-width: 768px){
-
     .section-format{
-      height:1200px;
+      min-height: 85%;
+    }
+    #aboutUs{
+    background-position-x: -600px
     }
   }
 
